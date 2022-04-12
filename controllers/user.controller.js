@@ -22,9 +22,7 @@ module.exports.create = (req, res) => {
 
 module.exports.getUserDetails = (req, res) => {
     let userId = parseInt(req.params.id);
-    console.log("ID =====> ", userId);
     let user = db.get('users').find({id: userId}).value();
-    console.log("user =====> ", user);
     res.render('users/view', {
         user: user
     });

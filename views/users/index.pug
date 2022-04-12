@@ -1,16 +1,19 @@
-h1 List Users
+extends ../layouts/header
 
-br
-h3 Search User
-form(action="/users/search", method="GET")
-  input(type="text", name="q")
-  button  Search
-br
+block content 
+  h1 List Users
 
-each user in users
-    li
-      a(href="/users/"+ user.id)= user.name 
+  br
+  h3 Search User
+  form(action="/users/search", method="GET")
+    input(type="text", name="q")
+    button  Search
+  br
 
-br
+  each user in users
+      li
+        a(href="/users/"+ user.id)= user.name 
 
-a(href="/users/create") Create New Users
+  br
+
+  a(href="/users/create") Create New Users

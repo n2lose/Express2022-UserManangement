@@ -1,7 +1,18 @@
-h1 Create User 
-form(action="/users/create", method="POST")
-    label Name
-    br
-    input(type="text", name="name")
+extends ../layouts/header
 
-    button Create User
+block content 
+
+    <div class="row">
+        <div class="col-xs">
+            h1 Create User 
+        </div>
+        <div class="col-xs">
+            form(action="/users/create", method="POST")
+                label Name
+                br
+                input(type="text", name="name")
+        </div>
+        <div class="col-xs">
+                button Create User
+        </div> 
+    </div>
