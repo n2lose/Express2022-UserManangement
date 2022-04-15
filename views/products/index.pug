@@ -1,0 +1,20 @@
+extends ../layouts/root
+block content 
+  h1 Products 
+
+  .d-flex.align-items-center
+    form.d-flex.ms-auto(action="/users/search", method="GET")
+      input.form-control(type="text", name="q")
+      button.btn.btn-primary.ms-2 Search
+
+  div(class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3")
+    each product in products 
+      .col 
+        .card
+          img(class="bd-placeholder-img card-img-top", src="https://loremflickr.com/320/240")
+          .card-body 
+
+            h5.card-title Asparagus - Mexican
+            p.card-text justo pellentesque viverra pede ac diam cras pellentesque volutpat dui maecenas tristique est et tempus semper est quam pharetra magna ac consequat
+
+            a.btn.btn-primary Add to card

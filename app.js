@@ -1,9 +1,15 @@
+require('dotenv').config();
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 
+const auth = require('./middleware/auth.middleware');
+
 const userRoutes = require('./routes/user.route');
 const authRoutes = require('./routes/auth.route');
+const productsRouter = require('./routes/products.route')
+
 
 const port = 4000;
 
@@ -21,8 +27,9 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
-app.use('/users', userRoutes);
+app.use('/users', auth.requiredAuthenticate, userRoutes);
 app.use('/auth', authRoutes);
+app.use('/products', productsRouter);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
