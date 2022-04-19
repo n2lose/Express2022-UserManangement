@@ -1,4 +1,4 @@
-module.exports.postCreate = (req, res) => {
+module.exports.postCreate = (req, res, next) => {
     let errors = [];
     if(!req.body.name) {
         errors.push('Name is required');
@@ -19,5 +19,5 @@ module.exports.postCreate = (req, res) => {
         });
         return;
     }
-    next
+    next();
 };

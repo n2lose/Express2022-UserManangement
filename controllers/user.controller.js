@@ -29,12 +29,16 @@ module.exports.getUserDetails = (req, res) => {
 }
 
 module.exports.postCreateUser = (req, res) => {
-
+    console.log("req.file.path ===================== ", req.file.path);
+    let avatarURL = req.file.path;
+    avatarURL = avatarURL.split('\\').slice(1).join('/');
+    console.log("avatar path ============================ ", avatarURL);
     let newuser = {
         "id": users.length +1,
         "name": req.body.name,
         "phone": req.body.phone,
-        "email": req.body.email
+        "email": req.body.email,
+        'avatar': avatarURL
     };
     db.get('users').push(newuser).write();
     res.redirect('/users');
