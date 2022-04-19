@@ -11,10 +11,23 @@ block content
     each product in products 
       .col 
         .card
-          img(class="bd-placeholder-img card-img-top", src="https://loremflickr.com/320/240")
+          img(class="bd-placeholder-img card-img-top", src=product.image)
           .card-body 
 
-            h5.card-title Asparagus - Mexican
-            p.card-text justo pellentesque viverra pede ac diam cras pellentesque volutpat dui maecenas tristique est et tempus semper est quam pharetra magna ac consequat
+            h5.card-title= product.name
+            p.card-text= product.description 
 
             a.btn.btn-primary Add to card
+  nav.mt-5 
+    ul.pagination 
+      li.page-item 
+        a.page-link(href='/products/?page='+ page +'&action=prev') Previous
+      - var n = 1;
+        while n < size
+          li.page-item(class = (n === page) ? 'active' : '')
+            a.page-link(href="/products/?page="+ n)= n
+            - n++
+
+
+      li.page-item 
+        a.page-link(href='/products/?page='+ page +'&action=next') Next
